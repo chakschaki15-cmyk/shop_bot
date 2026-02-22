@@ -1,6 +1,5 @@
 import asyncio
 import os
-from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.filters import Command
 from aiogram.types import Message, CallbackQuery, WebAppInfo
@@ -11,7 +10,6 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from openai import OpenAI
 import logging
 
-load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -36,7 +34,7 @@ real_products = {
     "💎 NFT коллекция": 900,
     "👑 Merch премиум": 2000,
     "📱 Бот на сайте": 500,
-    "₿ Крипто скам": 5000,
+    "Крипто": 5000,
     "📱 Telegram бот": 5000
 }
 
@@ -153,4 +151,5 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
