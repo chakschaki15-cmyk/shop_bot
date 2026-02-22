@@ -1,17 +1,29 @@
-name: Run Shop Bot
+name: Deploy Telegram Bot
+
 on:
-  schedule:
-    - cron: '*/5 * * * *'  # каждые 5 мин
+  push:
+    branches: [ main ]
   workflow_dispatch:
+
 jobs:
-  bot:
+  deploy:
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-    - run: pip install -r requirements.txt
-    - run: python shop_bot.py
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run bot
       env:
-        BOT_TOKEN
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        ADMIN_ID: ${{ secrets.ADMIN_ID }}
+      run: python bot.py
