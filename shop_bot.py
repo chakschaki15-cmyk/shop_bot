@@ -82,3 +82,4 @@ async def ai_handler(message: Message, state: FSMContext):
         await message.answer(f"Подвис ({e}). Кликни магазин, бро.")
 
 # ... (все остальные функции БЕЗ ИЗМЕНЕНИЙ!) ...
+
