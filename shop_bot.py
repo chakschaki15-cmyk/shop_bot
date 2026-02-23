@@ -1,5 +1,9 @@
 import asyncio
 import os
+from dotenv import load_dotenv  # ← ДОБАВЬ!
+load_dotenv()  # ← ДОБАВЬ!
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 from openai import OpenAI  # ← ДОБАВЬ ЭТУ СТРОКУ!
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.filters import Command
@@ -82,4 +86,5 @@ async def ai_handler(message: Message, state: FSMContext):
         await message.answer(f"Подвис ({e}). Кликни магазин, бро.")
 
 # ... (все остальные функции БЕЗ ИЗМЕНЕНИЙ!) ...
+
 
